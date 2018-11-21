@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MiServicioService } from '../mi-servicio.service';
-import { MiObjeto } from '../interfaces/miobjeto';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +8,7 @@ import { MiObjeto } from '../interfaces/miobjeto';
 })
 export class LoginComponent implements OnInit {
 
-  miObjeto: MiObjeto;
+  miObjeto: any;
   array;
 
   constructor(
