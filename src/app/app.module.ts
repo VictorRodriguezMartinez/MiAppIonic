@@ -14,12 +14,13 @@ import { MiServicioService } from './mi-servicio.service';
 import { AdminComponent } from './admin/admin.component';
 import { UsuarioComponent } from './admin/usuario/usuario.component';
 import { TrabajoComponent } from './admin/trabajo/trabajo.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, AdminComponent, UsuarioComponent, TrabajoComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
     StatusBar,
     SplashScreen,

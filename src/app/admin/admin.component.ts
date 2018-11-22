@@ -7,15 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  opcion: string;
+  opcionSeleccionada: string;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  verTrabajo() {
-    
+  asignarOpcion(opcion) {
+    this.opcionSeleccionada = opcion;
+    console.log(this.opcionSeleccionada);
+
+    this.cerrarNavBar();
+
+  }
+
+  cerrarNavBar() {
+    document.getElementById('botonMenu').click();
   }
 
 }

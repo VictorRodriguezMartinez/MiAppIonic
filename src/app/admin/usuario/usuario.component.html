@@ -1,3 +1,64 @@
-<p>
-  usuario works!
-</p>
+<div *ngIf="opcionUsuario==='usuarioVer'" class="input-group mb-3">
+    <!-- [(ngModel)]="terminoBusqueda" -->
+  <input type="text"  class="form-control"  #buscarTexto placeholder="Introduce nombre a buscar" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="buscarUsuario(buscarTexto.value)">Buscar</button>
+  </div>
+</div>
+
+
+<div *ngIf="opcionUsuario==='usuarioVer'">
+    <div *ngFor="let item of usuariosFiltrados" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-header">{{ item.nombre }}</div>
+        <div class="card-body">
+          <h5 class="card-title">Secondary card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+
+</div>
+<!-- formulario para la creacion de usuario -->
+<div *ngIf="opcionUsuario==='usuarioAnadir'">
+    <form>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Email address</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Example select</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect2">Example multiple select</label>
+          <select multiple class="form-control" id="exampleFormControlSelect2">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Example textarea</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+      </form>
+</div>
+
+<div *ngIf="opcionUsuario=='usuarioAnadirTrabajo'">
+    opcionUsuario=='usuarioAnadirTrabajo'
+</div>
+
+<div *ngIf="opcionUsuario=='usuarioModificar'">
+    opcionUsuario=='usuarioModificar'
+</div>
+
+<div *ngIf="opcionUsuario=='usuarioBorrar'">
+    opcionUsuario=='usuarioBorrar'
+</div>
