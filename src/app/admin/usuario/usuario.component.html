@@ -1,18 +1,20 @@
-<div *ngIf="opcionUsuario==='usuarioVer'" class="input-group mb-3">
-    <!-- [(ngModel)]="terminoBusqueda" -->
-  <input type="text"  class="form-control"  #buscarTexto placeholder="Introduce nombre a buscar" aria-label="Recipient's username" aria-describedby="button-addon2">
-  <div class="input-group-append">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="buscarUsuario(buscarTexto.value)">Buscar</button>
-  </div>
-</div>
+
 
 
 <div *ngIf="opcionUsuario==='usuarioVer'">
-    <div *ngFor="let item of usuariosFiltrados" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+    <div class="input-group mb-3">
+        <!-- [(ngModel)]="terminoBusqueda" -->
+      <input type="text"  class="form-control"  #buscarTexto placeholder="Introduce nombre a buscar" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="buscarUsuario(buscarTexto.value)">Buscar</button>
+      </div>
+    </div>
+    <div *ngFor="let item of usuariosFiltrados" class="card text-white bg-secondary mb-3" >
         <div class="card-header">{{ item.nombre }}</div>
         <div class="card-body">
           <h5 class="card-title">Secondary card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <button class="btn btn-primary" (click)="verUsuario(item)">Ver más...</button>
         </div>
       </div>
 
@@ -53,12 +55,47 @@
 
 <div *ngIf="opcionUsuario=='usuarioAnadirTrabajo'">
     opcionUsuario=='usuarioAnadirTrabajo'
+    <div class="input-group mb-3">
+        <!-- [(ngModel)]="terminoBusqueda" -->
+      <input type="text"  class="form-control"  #buscarTextoAnadirTrabajoUsuario placeholder="Introduce nombre a buscar" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="buscarUsuario(buscarTextoAnadirTrabajoUsuario.value)">Buscar</button>
+      </div>
+    </div>
 </div>
 
 <div *ngIf="opcionUsuario=='usuarioModificar'">
     opcionUsuario=='usuarioModificar'
+    <div class="input-group mb-3">
+        <!-- [(ngModel)]="terminoBusqueda" -->
+      <input type="text"  class="form-control"  #buscarTextoModificarUsuario placeholder="Introduce nombre a buscar" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="buscarUsuario(buscarTextoModificarUsuario.value)">Buscar</button>
+      </div>
+    </div>
+    <div *ngFor="let item of usuariosFiltrados" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-header">{{ item.nombre }}</div>
+        <div class="card-body">
+          <h5 class="card-title">Secondary card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
 </div>
 
 <div *ngIf="opcionUsuario=='usuarioBorrar'">
     opcionUsuario=='usuarioBorrar'
+    <div class="input-group mb-3">
+        <!-- [(ngModel)]="terminoBusqueda" -->
+      <input type="text"  class="form-control"  #buscarTextoBorrarUsuario placeholder="Introduce nombre a buscar" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="buscarUsuario(buscarTextoBorrarUsuario.value)">Buscar</button>
+      </div>
+    </div>
+    <div *ngFor="let item of usuariosFiltrados" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-header">{{ item.nombre }}</div>
+        <div class="card-body">
+          <h5 class="card-title">Secondary card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
 </div>

@@ -39,6 +39,9 @@ export class UsuarioComponent implements OnInit {
 
     return this.usuariosFiltrados;
   }
+  verUsuario (usuario: Usuario) {
+    console.log(usuario);
+  }
 
   accionUsuario() {
     switch (this.opcionUsuario) {

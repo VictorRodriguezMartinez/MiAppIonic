@@ -7,7 +7,7 @@ export class Usuario {
 export const USUARIOS: Usuario[] = [
   {
     "id": 1,
-    "nombre": "juan",
+    "nombre": "Juan",
     "apellidos": "lopez",
     "email": "juan@contacto.com"
   },
