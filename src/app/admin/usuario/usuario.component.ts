@@ -43,7 +43,7 @@ export class UsuarioComponent implements OnInit {
   accionUsuario() {
     switch (this.opcionUsuario) {
       case 'usuarioVer':
-      console.log(this.terminoBusqueda);
+      // console.log(this.terminoBusqueda);
       console.log(this.usuarios);
       // return this.usuarios;
       break;
