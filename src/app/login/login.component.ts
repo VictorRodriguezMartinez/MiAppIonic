@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MiServicioService } from '../mi-servicio.service';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +11,11 @@ export class LoginComponent implements OnInit {
 
   miObjeto: any;
   array;
+  redireccion: string;
 
   constructor(
-    public userService: MiServicioService
+    public userService: MiServicioService,
+    public routerModule: Router
   ) { }
 
   ngOnInit() {
@@ -31,6 +34,26 @@ x() {
     console.log(this.miObjeto);
     sessionStorage.setItem('a', JSON.stringify(this.array));
     });
+}
+login (usuario, contrasena) {
+  this.userService.login(usuario, contrasena).subscribe(data => {
+     console.log(data);
+     if ( data['response'] ) {
+      console.log("aaaa");
+      localStorage.setItem('usuario', JSON.stringify(data['usuario']));
+      if ( data['usuario']['rol'] === 'admin' ) {
+        this.routerModule.navigate(['admin']);
+       } else {
+        this.routerModule.navigate(['home']);
+       }
+      // this.routerModule.navigate(['admin']);
+     }
+   });
+  //  let response = this.userService.login(usuario, contrasena);
+  //  console.log(response.[resultado]);
+  //  if (response['resultado']) {
+  //    sessionStorage.setItem('usuario', usuario);
+  //  }
 }
 
 

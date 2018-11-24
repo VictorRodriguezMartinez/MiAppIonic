@@ -44,4 +44,12 @@ borrarUsuario () {
 
 }
 
+login (usuario, contrasena) {
+  // return this.http.get('http://localhost/api/v1/usuario.php?usuario=' + usuario + '&contrasena=' + contrasena);
+  // console.log(this.http.get('http://localhost/api/v1/usuario.php?email=admin@admin.com&contrasena=123'));
+
+  return this.http.get('http://localhost/api/v1/usuario.php?usuario=' + usuario + '&contrasena=' + contrasena);
+
+}
+
 }

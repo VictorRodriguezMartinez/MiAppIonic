@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MiServicioService } from '../../mi-servicio.service';
 import { Usuario, USUARIOS } from '../../mock-usuarios';
+
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
@@ -29,8 +30,8 @@ export class UsuarioComponent implements OnInit {
     termino = termino.toLowerCase();
     this.usuariosFiltrados = new Array<Usuario> ();
 
-    for ( let usuario of this.usuarios) {
-      let nombre = usuario.nombre.toLowerCase();
+    for ( const usuario of this.usuarios) {
+      const nombre = usuario.nombre.toLowerCase();
 
       if ( nombre.indexOf( termino ) >= 0 ) {
         this.usuariosFiltrados.push( usuario );
