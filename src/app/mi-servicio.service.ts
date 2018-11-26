@@ -10,13 +10,14 @@ export class MiServicioService {
     private http: HttpClient
   ) { }
 
-getUsers() {
-  return this.http.get('https://randomuser.me/api/?results=2');
-}
+// getUsers() {
+//   return this.http.get('https://randomuser.me/api/?results=2');
+// }
 
-obtenerUsuarios (terminoBusqueda) {
-  console.log(USUARIOS);
-  return USUARIOS;
+obtenerUsuarios () {
+  // console.log(USUARIOS);
+  return this.http.get('http://localhost/api/v1/usuarios.php');
+  // return USUARIOS;
 }
 
 // comprobar que coincide el termino de busqueda con nombre, apellidos, email, o dni
@@ -36,9 +37,14 @@ getTrabajoPorNombre(terminoBusqueda) {
   return TRABAJOS;
 }
 
+getTrabajos () {
+  return this.http.get('http://localhost/api/v1/trabajos.php');
+}
+
 // se debe mostrar el usuario y posteriormente los trabajos que tiene asignados
-addTrabajo(nombre, descripcion) {
-  return this.http.post('http://localhost/api/v1/', '');
+anadirTrabajo(nombre, descripcion) {
+  return this.http.post('http://localhost/api/v1/trabajo.php?nombre=' + nombre +
+  '&descripcion=' + descripcion, '');
 }
 
 // modificar usuario

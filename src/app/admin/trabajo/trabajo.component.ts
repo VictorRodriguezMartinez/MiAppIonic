@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { MiServicioService } from "../../mi-servicio.service";
-import { TRABAJOS, Trabajo } from "src/app/mock-usuarios";
+import { Component, OnInit, Input } from '@angular/core';
+import { MiServicioService } from '../../mi-servicio.service';
+import { TRABAJOS, Trabajo } from 'src/app/mock-usuarios';
 
 @Component({
-  selector: "app-trabajo",
-  templateUrl: "./trabajo.component.html",
-  styleUrls: ["./trabajo.component.scss"]
+  selector: 'app-trabajo',
+  templateUrl: './trabajo.component.html',
+  styleUrls: ['./trabajo.component.scss']
 })
 export class TrabajoComponent implements OnInit {
   @Input() opcionUsuario: string;
@@ -19,12 +19,12 @@ export class TrabajoComponent implements OnInit {
   ngOnInit() {}
   // INSERT TRABAJO
   addTrabajo(nombre, descripcion) {
-    this.userService.addTrabajo(nombre, descripcion).subscribe(response => {
-      console.log(response);
-      console.log(response["response"]);
-      if (response["response"]) {
-        localStorage.setItem("usuario", JSON.stringify(response["usuario"]));
-      }
+    this.userService.anadirTrabajo(nombre, descripcion).subscribe(response => {
+      // console.log(response);
+      // console.log(response["response"]);
+      // if (response["response"]) {
+      //   localStorage.setItem("usuario", JSON.stringify(response["usuario"]));
+      // }
     });
   }
 

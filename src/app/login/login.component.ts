@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
 
 x() {
-  this.userService.getUsers().subscribe(response => {
+  this.userService.obtenerUsuarios().subscribe(response => {
     console.log(response);
     // this.miObjeto.gender = response[0].gender;
     // this.miObjeto.nameFirst = response[0].name.first;

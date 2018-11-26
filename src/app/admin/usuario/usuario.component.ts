@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MiServicioService } from '../../mi-servicio.service';
-import { Usuario, USUARIOS } from '../../mock-usuarios';
+import { Usuario, USUARIOS, Trabajo } from '../../mock-usuarios';
 
 @Component({
   selector: 'app-usuario',
@@ -11,16 +11,17 @@ export class UsuarioComponent implements OnInit {
 
 
   @Input() opcionUsuario: string;
-  // terminoBusqueda: boolean;
-  usuarios = USUARIOS;
+  usuarios: Usuario[];
   usuariosFiltrados: Usuario[];
   usuarioSeleccionado: Usuario;
+  trabajos: Trabajo[];
 
   constructor(
     public userService: MiServicioService
   ) { }
 
   ngOnInit() {
+    this.getUsuarios();
   }
 
   public limpiarUsuario() {
@@ -28,25 +29,31 @@ export class UsuarioComponent implements OnInit {
     this.usuariosFiltrados = null;
   }
 
-
-
   getUsuarioPorNombre (termino: string): Usuario[] {
     console.log(termino);
-    // this.terminoBusqueda = true;
 
     termino = termino.toLowerCase();
-    this.usuariosFiltrados = new Array<Usuario> ();
+     this.usuariosFiltrados = new Array<Usuario> ();
 
-    for ( const usuario of this.usuarios) {
-      const nombre = usuario.nombre.toLowerCase();
+     for ( const usuario of this.usuarios) {
+       const nombre = usuario.nombre.toLowerCase();
 
-      if ( nombre.indexOf( termino ) >= 0 ) {
-        this.usuariosFiltrados.push( usuario );
-      }
-    }
-    this.usuarioSeleccionado = null;
+       if ( nombre.indexOf( termino ) >= 0 ) {
+         this.usuariosFiltrados.push( usuario );
+       }
+     }
+     this.usuarioSeleccionado = null;
     return this.usuariosFiltrados;
   }
+
+getUsuarios() {
+  this.userService.obtenerUsuarios().subscribe(response => {
+    console.log(response);
+    this.usuarios = response['usuarios'];
+  });
+}
+
+  // Asigna valor a variable usuarioSeleccionado
   cargarDatosUsuario (usuario: Usuario) {
     this.usuarioSeleccionado = usuario;
     this.usuariosFiltrados = new Array<Usuario> ();
@@ -61,6 +68,14 @@ export class UsuarioComponent implements OnInit {
       localStorage.setItem('usuario', JSON.stringify(response['usuario']));
     }
     });
+  }
+  getTrabajos () {
+    this.userService.getTrabajos().subscribe(response => {
+      console.log(response);
+      this.trabajos = response['trabajos'];
+      console.log(this.trabajos);
+    });
+    // this.trabajos = this.userService.getTrabajos();
   }
 
   accionUsuario() {

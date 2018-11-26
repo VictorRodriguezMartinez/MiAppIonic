@@ -20,14 +20,11 @@ export class AdminComponent implements OnInit {
   asignarOpcion(opcion) {
     if (this.opcionSeleccionada) {
       this.usuarioComponente.limpiarUsuario();
-      
-
     }
     this.opcionSeleccionada = opcion;
     console.log(this.opcionSeleccionada);
 
     this.cerrarNavBar();
-
   }
 
   cerrarNavBar() {
