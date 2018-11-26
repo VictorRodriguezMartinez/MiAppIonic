@@ -16,12 +16,12 @@ import { UsuarioComponent } from './admin/usuario/usuario.component';
 import { TrabajoComponent } from './admin/trabajo/trabajo.component';
 import { FormsModule } from '@angular/forms';
 
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, AdminComponent, UsuarioComponent, TrabajoComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule, NgbModule],
   providers: [
     StatusBar,
     SplashScreen,

@@ -39,7 +39,7 @@ login (usuario, contrasena) {
   this.userService.login(usuario, contrasena).subscribe(data => {
      console.log(data);
      if ( data['response'] ) {
-      console.log("aaaa");
+      console.log('aaaa');
       localStorage.setItem('usuario', JSON.stringify(data['usuario']));
       if ( data['usuario']['rol'] === 'admin' ) {
         this.routerModule.navigate(['admin']);
