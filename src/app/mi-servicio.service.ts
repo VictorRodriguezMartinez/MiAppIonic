@@ -25,8 +25,11 @@ verUsuario(terminoBusqueda) {
 }
 
 // añadir usuario con datos del mismo pasados por parametro
-anadirUsuario(usuarioDatos) {
-
+anadirUsuario(nombre, apellidos, email, contrasena) {
+  return this.http.post('http://localhost/api/v1/usuario.php?email=' + email
+  + '&contrasena=' + contrasena
+  + '&nombre=' + nombre
+  + '&apellidos=' + apellidos, '');
 }
 
 // se debe mostrar el usuario y posteriormente los trabajos que tiene asignados

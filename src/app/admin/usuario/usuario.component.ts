@@ -44,6 +44,17 @@ export class UsuarioComponent implements OnInit {
     console.log(usuario);
   }
 
+  // INSERT USUARIO
+  anadirUsuario (nombre, apellidos, email, contrasena) {
+    this.userService.anadirUsuario(nombre, apellidos, email, contrasena).subscribe(response => {
+    console.log(response);
+    console.log(response['response']);
+    if (  response['response'] ) {
+      localStorage.setItem('usuario', JSON.stringify(response['usuario']));
+    }
+    });
+  }
+
   accionUsuario() {
     switch (this.opcionUsuario) {
       case 'usuarioVer':

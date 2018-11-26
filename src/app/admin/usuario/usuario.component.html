@@ -21,17 +21,21 @@
     <form>
         <div class="form-group">
             <label for="exampleInputNombre">Nombre</label>
-            <input type="email" class="form-control" id="exampleInputNombre" aria-describedby="ApellidosHelp" placeholder="Nombre">
+            <input #nombreUsuario type="email" class="form-control" id="exampleInputNombre" aria-describedby="NombreHelp" placeholder="Nombre" required>
         </div>
         <div class="form-group">
             <label for="exampleInputApellidos">Apellidos</label>
-            <input type="email" class="form-control" id="exampleInputApellidos" aria-describedby="ApellidosHelp" placeholder="Apellidos">
+            <input #apellidosUsuario type="text" class="form-control" id="exampleInputApellidos" aria-describedby="ApellidosHelp" placeholder="Apellidos" required>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail">Email</label>
-            <input type="password" class="form-control" id="exampleInputEmail" placeholder="Email">
+            <label for="exampleInputApellidos">Email</label>
+            <input #emailUsuario type="email" class="form-control" id="exampleInputEmail" aria-describedby="ApellidosHelp" placeholder="Email" required>
         </div>
-        <div class="row">
+        <div class="form-group">
+            <label for="exampleInputEmail">Contraseña</label>
+            <input #contrasenaUsuario type="password" class="form-control" id="exampleInputContrasena" placeholder="Contraseña" required>
+        </div>
+        <!-- <div class="row">
             <div class="col-12">
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
@@ -48,7 +52,9 @@
                     <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
                 </div>
             </div>
-        </div>
+        </div> -->
+
+        <button type="button" class="btn btn-block  btn-info" (click)="anadirUsuario(nombreUsuario.value,apellidosUsuario.value,emailUsuario.value,contrasenaUsuario.value)">Añadir usuario</button>
     </form>
 </div>
 
