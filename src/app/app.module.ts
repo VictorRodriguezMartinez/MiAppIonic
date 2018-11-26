@@ -17,6 +17,7 @@ import { TrabajoComponent } from './admin/trabajo/trabajo.component';
 import { FormsModule } from '@angular/forms';
 
 
+
 @NgModule({
   declarations: [AppComponent, LoginComponent, AdminComponent, UsuarioComponent, TrabajoComponent],
   entryComponents: [],

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { USUARIOS } from './mock-usuarios';
+import { USUARIOS, TRABAJOS } from './mock-usuarios';
 @Injectable({
   providedIn: 'root'
 })
@@ -32,9 +32,13 @@ anadirUsuario(nombre, apellidos, email, contrasena) {
   + '&apellidos=' + apellidos, '');
 }
 
-// se debe mostrar el usuario y posteriormente los trabajos que tiene asignados
-anadirTrabajo(terminoBusqueda) {
+getTrabajoPorNombre(terminoBusqueda) {
+  return TRABAJOS;
+}
 
+// se debe mostrar el usuario y posteriormente los trabajos que tiene asignados
+addTrabajo(nombre, descripcion) {
+  return this.http.post('http://localhost/api/v1/', '');
 }
 
 // modificar usuario

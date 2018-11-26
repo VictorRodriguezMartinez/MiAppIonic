@@ -1,110 +1,244 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-title>
-            Ionic APP
-        </ion-title>
-    </ion-toolbar>
+  <ion-toolbar> <ion-title> Ionic APP </ion-title> </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-    <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Inicio</a>
-            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Usuario</a>
-            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Configuración</a>
-        </div>
-    </nav>
-
-    <!-- FICHADO -->
-    <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <div class="form-group">
-                <label for="sel1">Selecciona trabajo:</label>
-                <select class="form-control" id="sel1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                </select>
-            </div>
-            <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
-                <div class="card-header">header</div>
-                <div class="card-body">
-                    <h5 class="card-title">Secondary card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-            </div>
-
-            Mañana:
-            <p>Desde</p><input type="datetime">
-            <p>Desde</p><input type="datetime-local">
-            <p>Desde</p><input type="date">
-            <p>Desde</p><input type="time">
-
-
-        </div>
-
-        <!-- USUARIO -->
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputNombre">Nombre</label>
-                    <input type="email" class="form-control" id="exampleInputNombre" aria-describedby="ApellidosHelp" placeholder="Nombre">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputApellidos">Apellidos</label>
-                    <input type="email" class="form-control" id="exampleInputApellidos" aria-describedby="ApellidosHelp" placeholder="Apellidos">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail">Email</label>
-                    <input type="password" class="form-control" id="exampleInputEmail" placeholder="Email">
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-                            <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-                            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-                            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-                        </div>
-                    </div>
-                    <div class="col-8">
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
-                            <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
-                            <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
-                            <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-            <form>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword" placeholder="Contraseña">
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Nueva contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Nueva contraseña">
-                    <small id="emailHelp" class="form-text text-muted">Repita contraseña.</small>
-                </div>
-                <!-- <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div> -->
-                <button type="button" class="btn btn-primary">Actualizar contraseña</button>
-            </form>
-        </div>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a
+        class="nav-item nav-link active"
+        id="nav-home-tab"
+        data-toggle="tab"
+        href="#nav-home"
+        role="tab"
+        aria-controls="nav-home"
+        aria-selected="true"
+        >Inicio</a
+      >
+      <a
+        class="nav-item nav-link"
+        id="nav-profile-tab"
+        data-toggle="tab"
+        href="#nav-profile"
+        role="tab"
+        aria-controls="nav-profile"
+        aria-selected="false"
+        >Usuario</a
+      >
+      <a
+        class="nav-item nav-link"
+        id="nav-contact-tab"
+        data-toggle="tab"
+        href="#nav-contact"
+        role="tab"
+        aria-controls="nav-contact"
+        aria-selected="false"
+        >Configuración</a
+      >
     </div>
-    <button [routerLink]="['/login']" routerLinkActive="router-link-active"> Login</button>
-    <button [routerLink]="['/admin']" routerLinkActive="router-link-active"> Admin</button>
+  </nav>
 
+  <!-- FICHADO -->
+  <div class="tab-content" id="nav-tabContent">
+    <div
+      class="tab-pane fade show active"
+      id="nav-home"
+      role="tabpanel"
+      aria-labelledby="nav-home-tab"
+    >
+      <div class="form-group">
+        <label for="sel1">Selecciona trabajo:</label>
+        <select class="form-control" id="sel1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="sel2">Mañana:</label>
+        <input class="form-control" type="datetime-local" />
+        <input class="form-control" type="time" />
+      </div>
+      
+
+      
+    </div>
+
+    <!-- USUARIO -->
+    <div
+      class="tab-pane fade"
+      id="nav-profile"
+      role="tabpanel"
+      aria-labelledby="nav-profile-tab"
+    >
+      <form>
+        <div class="form-group">
+          <label for="exampleInputNombre">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputNombre"
+            aria-describedby="ApellidosHelp"
+            placeholder="Nombre"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputApellidos">Apellidos</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputApellidos"
+            aria-describedby="ApellidosHelp"
+            placeholder="Apellidos"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail"
+            placeholder="Email"
+          />
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="list-group" id="list-tab" role="tablist">
+              <a
+                class="list-group-item list-group-item-action active"
+                id="list-home-list"
+                data-toggle="list"
+                href="#list-home"
+                role="tab"
+                aria-controls="home"
+                >Home</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-profile-list"
+                data-toggle="list"
+                href="#list-profile"
+                role="tab"
+                aria-controls="profile"
+                >Profile</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-messages-list"
+                data-toggle="list"
+                href="#list-messages"
+                role="tab"
+                aria-controls="messages"
+                >Messages</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-settings-list"
+                data-toggle="list"
+                href="#list-settings"
+                role="tab"
+                aria-controls="settings"
+                >Settings</a
+              >
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="list-home"
+                role="tabpanel"
+                aria-labelledby="list-home-list"
+              >
+                ...
+              </div>
+              <div
+                class="tab-pane fade"
+                id="list-profile"
+                role="tabpanel"
+                aria-labelledby="list-profile-list"
+              >
+                ...
+              </div>
+              <div
+                class="tab-pane fade"
+                id="list-messages"
+                role="tabpanel"
+                aria-labelledby="list-messages-list"
+              >
+                ...
+              </div>
+              <div
+                class="tab-pane fade"
+                id="list-settings"
+                role="tabpanel"
+                aria-labelledby="list-settings-list"
+              >
+                ...
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <!-- CAMBIO CONTRASENA -->
+    <div
+      class="tab-pane fade"
+      id="nav-contact"
+      role="tabpanel"
+      aria-labelledby="nav-contact-tab"
+    >
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Email"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword">Contraseña</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword"
+            placeholder="Contraseña"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Nueva contraseña</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Nueva contraseña"
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >Repita contraseña.</small
+          >
+        </div>
+        <!--
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+        -->
+        <button type="button" class="btn btn-primary">
+          Actualizar contraseña
+        </button>
+      </form>
+    </div>
+  </div>
+  <button [routerLink]="['/login']" routerLinkActive="router-link-active">
+    Login
+  </button>
+  <button [routerLink]="['/admin']" routerLinkActive="router-link-active">
+    Admin
+  </button>
 </ion-content>

@@ -14,6 +14,8 @@ export class UsuarioComponent implements OnInit {
   // terminoBusqueda: boolean;
   usuarios = USUARIOS;
   usuariosFiltrados: Usuario[];
+  usuarioSeleccionado: Usuario;
+
   constructor(
     public userService: MiServicioService
   ) { }
@@ -21,9 +23,14 @@ export class UsuarioComponent implements OnInit {
   ngOnInit() {
   }
 
+  public limpiarUsuario() {
+    this.usuarioSeleccionado = null;
+    this.usuariosFiltrados = null;
+  }
 
 
-  buscarUsuario (termino: string): Usuario[] {
+
+  getUsuarioPorNombre (termino: string): Usuario[] {
     console.log(termino);
     // this.terminoBusqueda = true;
 
@@ -37,11 +44,12 @@ export class UsuarioComponent implements OnInit {
         this.usuariosFiltrados.push( usuario );
       }
     }
-
+    this.usuarioSeleccionado = null;
     return this.usuariosFiltrados;
   }
-  verUsuario (usuario: Usuario) {
-    console.log(usuario);
+  cargarDatosUsuario (usuario: Usuario) {
+    this.usuarioSeleccionado = usuario;
+    this.usuariosFiltrados = new Array<Usuario> ();
   }
 
   // INSERT USUARIO

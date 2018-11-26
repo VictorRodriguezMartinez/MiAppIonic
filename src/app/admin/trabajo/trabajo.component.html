@@ -1,3 +1,164 @@
-<p>
-  trabajo works!
-</p>
+<!-- trabajoVer -->
+<div *ngIf="opcionUsuario == 'trabajoVer'">
+  <div class="input-group mb-3" *ngIf="opcionUsuario == 'trabajoVer'">
+    <input
+      type="text"
+      class="form-control"
+      #buscarTextoVerTrabajo
+      placeholder="Introduce nombre a buscar"
+      aria-label="Recipient's username"
+      aria-describedby="button-addon2"
+    />
+    <div class="input-group-append">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        id="button-addon2"
+        (click)="getTrabajoPorNombre(buscarTextoVerTrabajo.value)"
+      >
+        Buscar
+      </button>
+    </div>
+  </div>
+  <div
+    *ngFor="let item of trabajosFiltrados"
+    class="card text-white bg-secondary mb-3"
+    style="max-width: 30rem;"
+  >
+    <div class="card-header">{{ item.nombre }}</div>
+    <div class="card-body">
+      <h5 class="card-title">Secondary card title</h5>
+      <p class="card-text">
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </p>
+      <button class="btn btn-primary" (click)="cargarDatosTrabajo(item)">
+        Ver más...
+      </button>
+    </div>
+  </div>
+  <div *ngIf="trabajoSeleccionado" class="card bg-light mb-3">
+    <div class="card-header">
+      <span class="badge badge-pill badge-primary">
+        {{ trabajoSeleccionado.id }}
+      </span>
+      {{ trabajoSeleccionado.nombre }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Descripción:</h5>
+      <p>Descripción: {{ trabajoSeleccionado.descripcion }}</p>
+    </div>
+  </div>
+</div>
+<!-- trabajoAnadir -->
+<div *ngIf="opcionUsuario == 'trabajoAnadir'">
+  <form>
+    <div class="form-group">
+      <label for="NombreTrabajo">Nombre</label>
+      <input
+        #nombreTrabajo
+        type="text"
+        class="form-control"
+        id="NombreTrabajo"
+        aria-describedby="NombreTrabajo"
+        placeholder="Nombre"
+        required
+      />
+      <br />
+      <label for="DescripcionTrabajo">Descripción</label>
+      <textarea
+        #descripcionTrabajo
+        class="form-control"
+        id="DescripcionTrabajo"
+        rows="3"
+        placeholder="Descripción"
+      ></textarea>
+    </div>
+    <button
+      type="button"
+      class="btn btn-block  btn-info"
+      (click)="addTrabajo(nombreTrabajo.value, descripcionTrabajo.value)"
+    >
+      Añadir trabajo
+    </button>
+  </form>
+</div>
+<!-- trabajoModificar -->
+<div *ngIf="opcionUsuario == 'trabajoModificar'">
+  opcionUsuario=='trabajoModificar'
+  <div class="input-group mb-3" *ngIf="opcionUsuario == 'trabajoModificar'">
+    <input
+      type="text"
+      class="form-control"
+      #buscarTextoModificarTrabajo
+      placeholder="Introduce nombre de trabajo"
+      aria-label="Recipient's username"
+      aria-describedby="button-addon2"
+    />
+    <div class="input-group-append">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        id="button-addon2"
+        (click)="getTrabajoPorNombre(buscarTextoModificarTrabajo.value)"
+      >
+        Buscar trabajo
+      </button>
+    </div>
+  </div>
+  <div
+    *ngFor="let item of trabajosFiltrados"
+    class="card text-white bg-secondary mb-3"
+    style="max-width: 30rem;"
+  >
+    <div class="card-header">{{ item.nombre }}</div>
+    <div class="card-body">
+      <h5 class="card-title">Secondary card title</h5>
+      <p class="card-text">
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </p>
+      <button class="btn btn-primary" (click)="cargarDatosTrabajo(item)">
+        Ver más...
+      </button>
+    </div>
+  </div>
+  <div *ngIf="trabajoSeleccionado" >
+      <form>
+          <div class="form-group">
+            <label for="NombreTrabajo">Nombre</label>
+            <input
+              #nombreTrabajo
+              type="text"
+              class="form-control"
+              id="NombreTrabajo"
+              aria-describedby="NombreTrabajo"
+              placeholder="Nombre"
+              required
+              [value]="trabajoSeleccionado.nombre"
+            />
+            <br />
+            <label for="DescripcionTrabajo">Descripción</label>
+            <textarea
+              #descripcionTrabajo
+              class="form-control"
+              id="DescripcionTrabajo"
+              rows="3"
+              placeholder="Descripción"
+              [value]="trabajoSeleccionado.descripcion"
+            ></textarea>
+          </div>
+          <button
+            type="button"
+            class="btn btn-block  btn-info"
+            (click)="addTrabajo(nombreTrabajo.value, descripcionTrabajo.value)"
+          >
+            Guardar cambios
+          </button>
+        </form>
+  </div>
+</div>
+<!-- trabajoBorrar -->
+<div *ngIf="opcionUsuario == 'trabajoBorrar'">
+  opcionUsuario=='trabajoBorrar'
+</div>

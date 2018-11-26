@@ -1,106 +1,297 @@
-<div *ngIf="opcionUsuario==='usuarioVer'">
-    <div class="input-group mb-3">
-        <!-- [(ngModel)]="terminoBusqueda" -->
-        <input type="text" class="form-control" #buscarTexto placeholder="Introduce nombre a buscar" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="buscarUsuario(buscarTexto.value)">Buscar</button>
-        </div>
+<!-- usuarioVer -->
+<div *ngIf="opcionUsuario === 'usuarioVer'">
+  <div class="input-group mb-3">
+    <!-- [(ngModel)]="terminoBusqueda" -->
+    <input
+      type="text"
+      class="form-control"
+      #buscarTexto
+      placeholder="Introduce nombre a buscar"
+      aria-label="Recipient's username"
+      aria-describedby="button-addon2"
+    />
+    <div class="input-group-append">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        id="button-addon2"
+        (click)="getUsuarioPorNombre(buscarTexto.value)"
+      >
+        Buscar
+      </button>
     </div>
-    <div *ngFor="let item of usuariosFiltrados" class="card text-white bg-secondary mb-3">
-        <div class="card-header">{{ item.nombre }}</div>
-        <div class="card-body">
-            <h5 class="card-title">Secondary card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button class="btn btn-primary" (click)="verUsuario(item)">Ver más...</button>
-        </div>
+  </div>
+  <div
+    *ngFor="let item of usuariosFiltrados"
+    class="card text-white bg-secondary mb-3"
+  >
+    <div class="card-header">{{ item.nombre }}</div>
+    <div class="card-body">
+      <h5 class="card-title">Secondary card title</h5>
+      <p class="card-text">
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </p>
+      <button class="btn btn-primary" (click)="cargarDatosUsuario(item)">
+        Ver más...
+      </button>
     </div>
-
+  </div>
+  <div *ngIf="usuarioSeleccionado" class="card bg-light mb-3">
+    <div class="card-header">
+      <span class="badge badge-pill badge-primary">
+        {{ usuarioSeleccionado.id }}
+      </span>
+      {{ usuarioSeleccionado.nombre }} {{ usuarioSeleccionado.apellidos }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ usuarioSeleccionado.email }}</h5>
+      <p>Nombre: {{ usuarioSeleccionado.nombre }}</p>
+      <p>Apellidos: {{ usuarioSeleccionado.apellidos }}</p>
+      <p>Contraseña: {{ usuarioSeleccionado.contrasena }}</p>
+      <p>Rol: {{ usuarioSeleccionado.rol }}</p>
+      <!--
+        <button class="btn btn-primary" (click)="getUsuarioPorNombre(item.nombre)">Ver más...</button>
+      -->
+    </div>
+  </div>
 </div>
-<!-- formulario para la creacion de usuario -->
-<div *ngIf="opcionUsuario==='usuarioAnadir'">
+<!-- usuarioAnadir -->
+<div *ngIf="opcionUsuario === 'usuarioAnadir'">
+  <form>
+    <div class="form-group">
+      <label for="exampleInputNombre">Nombre</label>
+      <input
+        #nombreUsuario
+        type="email"
+        class="form-control"
+        id="exampleInputNombre"
+        aria-describedby="NombreHelp"
+        placeholder="Nombre"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputApellidos">Apellidos</label>
+      <input
+        #apellidosUsuario
+        type="text"
+        class="form-control"
+        id="exampleInputApellidos"
+        aria-describedby="ApellidosHelp"
+        placeholder="Apellidos"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputApellidos">Email</label>
+      <input
+        #emailUsuario
+        type="email"
+        class="form-control"
+        id="exampleInputEmail"
+        aria-describedby="ApellidosHelp"
+        placeholder="Email"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail">Contraseña</label>
+      <input
+        #contrasenaUsuario
+        type="password"
+        class="form-control"
+        id="exampleInputContrasena"
+        placeholder="Contraseña"
+        required
+      />
+    </div>
+    <button
+      type="button"
+      class="btn btn-block  btn-info"
+      (click)="
+        anadirUsuario(
+          nombreUsuario.value,
+          apellidosUsuario.value,
+          emailUsuario.value,
+          contrasenaUsuario.value
+        )
+      "
+    >
+      Añadir usuario
+    </button>
+  </form>
+</div>
+
+<!-- usuarioAnadirTrabajo -->
+<div *ngIf="opcionUsuario == 'usuarioAnadirTrabajo'">
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      #buscarTextoAnadirTrabajoUsuario
+      placeholder="Introduce nombre de usuario"
+      aria-label="Recipient's username"
+      aria-describedby="button-addon2"
+    />
+    <div class="input-group-append">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        id="button-addon2"
+        (click)="getUsuarioPorNombre(buscarTextoAnadirTrabajoUsuario.value)"
+      >
+        Buscar
+      </button>
+    </div>
+  </div>
+  <div
+    *ngFor="let item of usuariosFiltrados"
+    class="card text-white bg-secondary mb-3"
+  >
+    <div class="card-header">{{ item.nombre }}</div>
+    <div class="card-body">
+      <h5 class="card-title">Secondary card title</h5>
+      <p class="card-text">
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </p>
+      <button class="btn btn-primary" (click)="cargarDatosUsuario(item)">
+        Añadir trabajo a usuario
+      </button>
+    </div>
+  </div>
+  </div>
+
+<!-- usuarioModificar -->
+<div *ngIf="opcionUsuario == 'usuarioModificar'">
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      #buscarTextoModificarUsuario
+      placeholder="Introduce nombre a buscar"
+      aria-label="Recipient's username"
+      aria-describedby="button-addon2"
+    />
+    <div class="input-group-append">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        id="button-addon2"
+        (click)="getUsuarioPorNombre(buscarTextoModificarUsuario.value)"
+      >
+        Buscar
+      </button>
+    </div>
+  </div>
+  <div
+    *ngFor="let item of usuariosFiltrados"
+    class="card text-white bg-secondary mb-3"
+    style="max-width: 18rem;"
+  >
+    <div class="card-header">{{ item.nombre }}</div>
+    <div class="card-body">
+      <h5 class="card-title">Secondary card title</h5>
+      <p class="card-text">
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </p>
+      <button
+        class="btn btn-info"
+        type="button"
+        id="button-addon2"
+        (click)="cargarDatosUsuario(item)"
+      >
+        Editar usuario
+      </button>
+    </div>
+  </div>
+  <div *ngIf="usuarioSeleccionado">
     <form>
-        <div class="form-group">
-            <label for="exampleInputNombre">Nombre</label>
-            <input #nombreUsuario type="email" class="form-control" id="exampleInputNombre" aria-describedby="NombreHelp" placeholder="Nombre" required>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputApellidos">Apellidos</label>
-            <input #apellidosUsuario type="text" class="form-control" id="exampleInputApellidos" aria-describedby="ApellidosHelp" placeholder="Apellidos" required>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputApellidos">Email</label>
-            <input #emailUsuario type="email" class="form-control" id="exampleInputEmail" aria-describedby="ApellidosHelp" placeholder="Email" required>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail">Contraseña</label>
-            <input #contrasenaUsuario type="password" class="form-control" id="exampleInputContrasena" placeholder="Contraseña" required>
-        </div>
-        <!-- <div class="row">
-            <div class="col-12">
-                <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-                </div>
-            </div>
-            <div class="col-8">
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
-                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
-                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
-                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
-                </div>
-            </div>
-        </div> -->
-
-        <button type="button" class="btn btn-block  btn-info" (click)="anadirUsuario(nombreUsuario.value,apellidosUsuario.value,emailUsuario.value,contrasenaUsuario.value)">Añadir usuario</button>
+      <div class="form-group">
+        <label for="exampleInputNombre">Nombre</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputNombre"
+          aria-describedby="ApellidosHelp"
+          placeholder="Nombre"
+          [value]="usuarioSeleccionado.nombre"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputApellidos">Apellidos</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputApellidos"
+          aria-describedby="ApellidosHelp"
+          placeholder="Apellidos"
+          [value]="usuarioSeleccionado.apellidos"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail"
+          placeholder="Email"
+          [value]="usuarioSeleccionado.email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPass">Contraseña</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputPass"
+          placeholder="Contraseña"
+          [value]="usuarioSeleccionado.contrasena"
+        />
+      </div>
+      <button class="btn btn-info">Guardar cambios</button>
     </form>
-</div>
+  </div>
 
-<div *ngIf="opcionUsuario=='usuarioAnadirTrabajo'">
-    opcionUsuario=='usuarioAnadirTrabajo'
-    <div class="input-group mb-3">
-        <!-- [(ngModel)]="terminoBusqueda" -->
-        <input type="text" class="form-control" #buscarTextoAnadirTrabajoUsuario placeholder="Introduce nombre a buscar" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="buscarUsuario(buscarTextoAnadirTrabajoUsuario.value)">Buscar</button>
-        </div>
-    </div>
-</div>
-
-<div *ngIf="opcionUsuario=='usuarioModificar'">
-    opcionUsuario=='usuarioModificar'
-    <div class="input-group mb-3">
-        <!-- [(ngModel)]="terminoBusqueda" -->
-        <input type="text" class="form-control" #buscarTextoModificarUsuario placeholder="Introduce nombre a buscar" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="buscarUsuario(buscarTextoModificarUsuario.value)">Buscar</button>
-        </div>
-    </div>
-    <div *ngFor="let item of usuariosFiltrados" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-        <div class="card-header">{{ item.nombre }}</div>
-        <div class="card-body">
-            <h5 class="card-title">Secondary card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-    </div>
-</div>
-
-<div *ngIf="opcionUsuario=='usuarioBorrar'">
+  <!-- usuarioBorrar -->
+  <div *ngIf="opcionUsuario == 'usuarioBorrar'">
     opcionUsuario=='usuarioBorrar'
     <div class="input-group mb-3">
-        <!-- [(ngModel)]="terminoBusqueda" -->
-        <input type="text" class="form-control" #buscarTextoBorrarUsuario placeholder="Introduce nombre a buscar" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="buscarUsuario(buscarTextoBorrarUsuario.value)">Buscar</button>
-        </div>
+      <!-- [(ngModel)]="terminoBusqueda" -->
+      <input
+        type="text"
+        class="form-control"
+        #buscarTextoBorrarUsuario
+        placeholder="Introduce nombre a buscar"
+        aria-label="Recipient's username"
+        aria-describedby="button-addon2"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          id="button-addon2"
+          (click)="getUsuarioPorNombre(buscarTextoBorrarUsuario.value)"
+        >
+          Buscar
+        </button>
+      </div>
     </div>
-    <div *ngFor="let item of usuariosFiltrados" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-        <div class="card-header">{{ item.nombre }}</div>
-        <div class="card-body">
-            <h5 class="card-title">Secondary card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
+    <div
+      *ngFor="let item of usuariosFiltrados"
+      class="card text-white bg-secondary mb-3"
+      style="max-width: 18rem;"
+    >
+      <div class="card-header">{{ item.nombre }}</div>
+      <div class="card-body">
+        <h5 class="card-title">Secondary card title</h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+      </div>
     </div>
+  </div>
 </div>
