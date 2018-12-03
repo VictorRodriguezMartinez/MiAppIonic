@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { Usuario } from '../mock-usuarios';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-admin',
@@ -12,7 +13,9 @@ export class AdminComponent implements OnInit {
   opcionSeleccionada: string;
   @ViewChild(UsuarioComponent) usuarioComponente: UsuarioComponent;
 
-  constructor() { }
+  constructor(
+    public alertController: AlertController
+  ) { }
 
   ngOnInit() {
   }

@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MiServicioService } from '../../mi-servicio.service';
 import { Usuario, USUARIOS, Trabajo } from '../../mock-usuarios';
-
+import { AlertController } from '@ionic/angular';
+// import * as $ from 'jquery';
+// declare var $: any;
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
@@ -17,7 +19,8 @@ export class UsuarioComponent implements OnInit {
   trabajos: Trabajo[];
 
   constructor(
-    public userService: MiServicioService
+    public userService: MiServicioService,
+    public alertController: AlertController
   ) { }
 
   ngOnInit() {
@@ -55,11 +58,26 @@ getUsuarios() {
 
   // Asigna valor a variable usuarioSeleccionado
   cargarDatosUsuario (usuario: Usuario) {
-    this.usuarioSeleccionado = usuario;
-    this.usuariosFiltrados = new Array<Usuario> ();
+     this.usuarioSeleccionado = usuario;
+     return;
   }
+  limpiarUsuariosFiltradosInicializar () {
+    this.usuariosFiltrados = new Array<Usuario> ();
+
+  }
+  limpiarUsuariosFiltrados () {
+    this.usuariosFiltrados = null;
+  }
+  limpiarTrabajos () {
+    this.trabajos = null;
+  }
+  cargarDatosUsuarioLimpiarFiltrados (usuario: Usuario) {
+    this.usuarioSeleccionado = usuario;
+    this.usuariosFiltrados = null;
+ }
 
   // INSERT USUARIO
+  // Usuario->Añadir
   anadirUsuario (nombre, apellidos, email, contrasena) {
     this.userService.anadirUsuario(nombre, apellidos, email, contrasena).subscribe(response => {
     console.log(response);
@@ -69,6 +87,7 @@ getUsuarios() {
     }
     });
   }
+
   getTrabajos () {
     this.userService.getTrabajos().subscribe(response => {
       console.log(response);
@@ -78,31 +97,43 @@ getUsuarios() {
     // this.trabajos = this.userService.getTrabajos();
   }
 
-  accionUsuario() {
-    switch (this.opcionUsuario) {
-      case 'usuarioVer':
-      // console.log(this.terminoBusqueda);
-      console.log(this.usuarios);
-      // return this.usuarios;
-      break;
+  getTrabajosTotales () {
+    this.userService.getTrabajos().subscribe(response => {
+      console.log(response);
+      this.trabajos = response['trabajos'];
+      console.log(this.trabajos);
+    });
+  }
+  getTrabajosUsuario (trabajosAsignados, idUsuario) {
+    this.userService.getTrabajosUsuario(trabajosAsignados, idUsuario).subscribe(response => {
+      console.log(response);
+      this.trabajos = response['trabajos'];
+      console.log(this.trabajos);
+    });
+  }
 
-      case 'usuarioAnadir':
-        console.log('response');
-      break;
+  async presentAlert(header_, subheader_, message_, button_) {
+    const alert = await this.alertController.create({
+      header: header_, // alert
+      subHeader: subheader_, // subtitle
+      message: message_, // mensaje
+      buttons: [button_] // OK
+    });
 
-      case 'usuarioAnadirTrabajo':
+    await alert.present();
+  }
 
-      break;
-
-      case 'usuarioModificar':
-
-      break;
-
-      case 'usuarioBorrar':
-
-      break;
-
-    }
+  anadirTrabajoUsuario(usuarioSeleccionadoId, trabajoId) {
+    this.userService.addTrabajoUsuario(usuarioSeleccionadoId, trabajoId).subscribe(response => {
+    // console.log(response['response']);
+      // if (response['response']) {
+      //   // mensaje correcto
+      //   this.presentAlert('Datos guardados', 'Se acaba de asignar el trabajo al usuario', '', 'ok');
+      // } else {
+      //   // mensaje error
+      //   this.presentAlert('Error', 'Se ha producido un error al guardar los datos', '', 'ok');
+      // }
+    });
   }
 
 }
