@@ -76,7 +76,7 @@
     <div class="input-group mb-3">
         <input type="text" class="form-control" #buscarTextoAnadirTrabajoUsuario placeholder="Introduce nombre de usuario" aria-label="Recipient's username" aria-describedby="button-addon2" />
         <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="limpiarUsuariosFiltrados(); limpiarTrabajos(); getUsuarioPorNombre(buscarTextoAnadirTrabajoUsuario.value); ">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="getUsuarioPorNombre(buscarTextoAnadirTrabajoUsuario.value)">
         Buscar
       </button>
         </div>
@@ -89,7 +89,7 @@
             <p class="card-text">
                 Some quick example text to build on the card title and make up the bulk of the card's content.
             </p>
-            <button class="btn btn-primary" (click)="cargarDatosUsuario(item); getTrabajosUsuario(false,item.id); limpiarUsuariosFiltrados()">
+            <button class="btn btn-primary" (click)="cargarDatosUsuario(item); getTrabajos()">
         Añadir trabajo a usuario
       </button>
         </div>
@@ -118,41 +118,28 @@
 
 
 
-    <table *ngIf="trabajos" class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <td scope="col">Nombre</td>
-            </tr>
 
-        </thead>
-        <tbody *ngFor="let item of trabajos; let i = index">
+    <div id="accordion">
+        <div class="card" *ngFor="let item of trabajos">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Collapsible Group Item #1
+                </button>
+                </h5>
+            </div>
 
-
-            <tr>
-                <th scope="row">
-                    <br>
-                    <h3>
-                        <a class="btn btn-sm btn-primary" (click)="anadirTrabajoUsuario(usuarioSeleccionado.id,item.id); getTrabajosUsuario(false,usuarioSeleccionado.id);"><span class="glyphicon glyphicon-ok-circle"></span> Añadir trabajo</a>
-                        <!-- 
-                            
-                        
-                        -->
-                    </h3>
-                    <br>
-                </th>
-                <td>
-                    <!-- <span class="badge badge-pill badge-primary">{{ item.id }}</span> -->
-                    <ion-icon name="information-circle-outline" (click)="presentAlert('Descripción','',item.descripcion,'ok')"></ion-icon>
-                    {{ item.nombre }}
-                </td>
-                <!-- <td>@mdo</td> -->
-            </tr>
+            <div id="collapseOne" class="collapse" aria-labelledby=" headingOne " data-parent="#accordion ">
+                <div class="card-body ">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+                    on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+                    raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-
-        </tbody>
-    </table>
 
 </div>
 
@@ -172,9 +159,9 @@
             <h5 class="card-title">Secondary card title</h5>
             <p class="card-text">
                 Some quick example text to build on the card title and make up the bulk of the card's content. </p>
-            <button class="btn btn-info" type="button" id="button-addon2" (click)="cargarDatosUsuarioLimpiarFiltrados(item);">
-                            Editar usuario
-                        </button>
+            <button class="btn btn-info" type="button" id="button-addon2" (click)="cargarDatosUsuario(item)">
+        Editar usuario
+      </button>
         </div>
     </div>
     <div *ngIf="usuarioSeleccionado">
@@ -198,27 +185,26 @@
             <button class="btn btn-info">Guardar cambios</button>
         </form>
     </div>
-</div>
 
-<!-- usuarioBorrar -->
-<div *ngIf="opcionUsuario == 'usuarioBorrar'">
-    opcionUsuario=='usuarioBorrar'
-    <div class="input-group mb-3">
-        <!-- [(ngModel)]="terminoBusqueda" -->
-        <input type="text" class="form-control" #buscarTextoBorrarUsuario placeholder="Introduce nombre a buscar" aria-label="Recipient's username" aria-describedby="button-addon2" />
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="getUsuarioPorNombre(buscarTextoBorrarUsuario.value)">
+    <!-- usuarioBorrar -->
+    <div *ngIf="opcionUsuario == 'usuarioBorrar'">
+        opcionUsuario=='usuarioBorrar'
+        <div class="input-group mb-3">
+            <!-- [(ngModel)]="terminoBusqueda" -->
+            <input type="text" class="form-control" #buscarTextoBorrarUsuario placeholder="Introduce nombre a buscar" aria-label="Recipient's username" aria-describedby="button-addon2" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="getUsuarioPorNombre(buscarTextoBorrarUsuario.value)">
           Buscar
         </button>
+            </div>
+        </div>
+        <div *ngFor="let item of usuariosFiltrados" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+            <div class="card-header">{{ item.nombre }}</div>
+            <div class="card-body">
+                <h5 class="card-title">Secondary card title</h5>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the card's content.
+                </p>
+            </div>
         </div>
     </div>
-    <div *ngFor="let item of usuariosFiltrados" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-        <div class="card-header">{{ item.nombre }}</div>
-        <div class="card-body">
-            <h5 class="card-title">Secondary card title</h5>
-            <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-            </p>
-        </div>
-    </div>
-</div>

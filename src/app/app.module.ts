@@ -10,20 +10,18 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
-
 import { MiServicioService } from './mi-servicio.service';
 import { AdminComponent } from './admin/admin.component';
 import { UsuarioComponent } from './admin/usuario/usuario.component';
 import { TrabajoComponent } from './admin/trabajo/trabajo.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, AdminComponent, UsuarioComponent, TrabajoComponent, HomeComponent],
+  declarations: [AppComponent, LoginComponent, AdminComponent, UsuarioComponent, TrabajoComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule, NgbModule, ReactiveFormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule, NgbModule],
   providers: [
     StatusBar,
     SplashScreen,

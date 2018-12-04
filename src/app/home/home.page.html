@@ -1,13 +1,19 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-title> Ionic APP </ion-title>
-    </ion-toolbar>
+  <ion-toolbar> <ion-title> Ionic APP </ion-title> </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-    <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Inicio</a
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a
+        class="nav-item nav-link active"
+        id="nav-home-tab"
+        data-toggle="tab"
+        href="#nav-home"
+        role="tab"
+        aria-controls="nav-home"
+        aria-selected="true"
+        >Inicio</a
       >
       <a
         class="nav-item nav-link"
@@ -31,7 +37,7 @@
       >
     </div>
   </nav>
- 
+
   <!-- FICHADO -->
   <div class="tab-content" id="nav-tabContent">
     <div
@@ -40,76 +46,23 @@
       role="tabpanel"
       aria-labelledby="nav-home-tab"
     >
-    <!-- SELECCION TRABAJO -->
-    <!-- <form >    [formGroup]="registerForm" (ngSubmit)="onSubmit()" -->
-    <ion-list>    
-      <ion-item>
-        <ion-label class="resaltado">Selecciona trabajo</ion-label>
-        <ion-select okText="OK" cancelText="Cancelar" [(ngModel)]="trabajo" name="xx">
-          <ion-select-option *ngFor="let item of trabajos" [value]="item" (ionSelect)="asignarTrabajo(item)">{{ item.nombre }}</ion-select-option>
-        </ion-select>
-      </ion-item> 
-
-      <!-- TIPO JORNADA -->
-      <ion-item>
-        <ion-label class="resaltado" >Jornada continua</ion-label>
-        <ion-toggle color="primary"  [(ngModel)]="jornadaContinua" checked name="sdsd"></ion-toggle>
-      </ion-item>
-
-      <!-- FECHA -->
-      <ion-item>
-        <ion-label class="resaltado">Fecha</ion-label>
-        <ion-datetime  display-format="YYYY-MM-DD" done-text="OK" cancel-text="Cancelar" [(ngModel)]="fecha"></ion-datetime>
-      </ion-item>
-
-    
-
-    </ion-list>
-
-
-    <div *ngIf="!jornadaContinua">
-      <br>
-        <p class="resaltado">Mañana:</p>
-    </div>
-    
-    <ion-list>
-        <ion-item>
-            <ion-label class="resaltado">Desde</ion-label>
-            <ion-datetime display-format="HH:mm" done-text="OK" cancel-text="Cancelar" minuteValues="0,15,30,45" [(ngModel)]="horaInicioManana" ></ion-datetime>
-          </ion-item>
-        <ion-item>
-            <ion-label class="resaltado">Hasta</ion-label>
-            <ion-datetime display-format="HH:mm" done-text="OK" cancel-text="Cancelar" minuteValues="0,15,30,45" [(ngModel)]="horaFinManana"></ion-datetime>
-          </ion-item>
-
-    </ion-list>
-    
-    
-    <div *ngIf="!jornadaContinua">
-      <br>
-      <p class="resaltado">Tarde:</p>
-      <ion-list>
-        <ion-item>
-          <ion-label class="resaltado">Desde</ion-label>
-          <ion-datetime display-format="HH:mm" done-text="OK" cancel-text="Cancelar" minuteValues="0,15,30,45" [(ngModel)]="horaInicioTarde"></ion-datetime>
-        </ion-item>
-        <ion-item>
-          <ion-label class="resaltado">Hasta</ion-label>
-          <ion-datetime display-format="HH:mm" done-text="OK" cancel-text="Cancelar" minuteValues="0,15,30,45" [(ngModel)]="horaFinTarde"></ion-datetime>
-        </ion-item>
-        
-      </ion-list>
-    </div>
+      <div class="form-group">
+        <label for="sel1">Selecciona trabajo:</label>
+        <select class="form-control" id="sel1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="sel2">Mañana:</label>
+        <input class="form-control" type="datetime-local" />
+        <input class="form-control" type="time" />
+      </div>
       
 
-    <ion-button color="primary" expand="block" (click)="comprobarFomulario();" >Fichar</ion-button>
-    <!-- type="submit" -->
-  <!-- </form> -->
-
-
-
-
-
+      
     </div>
 
     <!-- USUARIO -->
@@ -128,7 +81,6 @@
             id="exampleInputNombre"
             aria-describedby="ApellidosHelp"
             placeholder="Nombre"
-            [value]="usuario.nombre"
           />
         </div>
         <div class="form-group">
@@ -139,7 +91,6 @@
             id="exampleInputApellidos"
             aria-describedby="ApellidosHelp"
             placeholder="Apellidos"
-            [value]="usuario.apellidos"
           />
         </div>
         <div class="form-group">
@@ -149,7 +100,6 @@
             class="form-control"
             id="exampleInputEmail"
             placeholder="Email"
-            [value]="usuario.email"
           />
         </div>
         <div class="row">
@@ -285,13 +235,10 @@
       </form>
     </div>
   </div>
-
-  <!-- <button [routerLink]="['/login']" routerLinkActive="router-link-active">
+  <button [routerLink]="['/login']" routerLinkActive="router-link-active">
     Login
   </button>
   <button [routerLink]="['/admin']" routerLinkActive="router-link-active">
     Admin
-  </button> -->
-
-
+  </button>
 </ion-content>
