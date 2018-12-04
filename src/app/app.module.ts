@@ -17,9 +17,10 @@ import { TrabajoComponent } from './admin/trabajo/trabajo.component';
 import { FormsModule } from '@angular/forms';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, AdminComponent, UsuarioComponent, TrabajoComponent],
+  declarations: [AppComponent, LoginComponent, AdminComponent, UsuarioComponent, TrabajoComponent, HomeComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule, NgbModule],
   providers: [
