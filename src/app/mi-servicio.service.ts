@@ -12,6 +12,7 @@ export class MiServicioService {
 
   usuario: Usuario;
 
+  // obtener todos los usuarios, utilizado en admin al iniciar componente
 obtenerUsuarios () {
   return this.http.get('http://localhost/api/v1/usuarios.php');
 }
@@ -51,9 +52,9 @@ anadirTrabajo(nombre, descripcion) {
 }
 
 // modificar usuario
-modificarUsuario() {
+modificarUsuario(usuario: Usuario) {
   // guardar en base de datos
-
+  return this.http.put('http://localhost/API_Project/operaciones.php?operacion=mus&nombre=' + usuario.nombre + '' , '');
   // guardar en localStorage
 
 }

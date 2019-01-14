@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 horaInicioManana: string  ;
 horaFinManana: string;
 idTrabajo: number;
-fecha: string;
+fecha = new Date().toISOString();
 comentario = '';
 
 horaInicioTarde: string;

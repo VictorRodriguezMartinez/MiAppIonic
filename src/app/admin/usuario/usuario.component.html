@@ -9,16 +9,14 @@
       </button>
         </div>
     </div>
-    <div *ngFor="let item of usuariosFiltrados" class="card text-white bg-secondary mb-3">
-        <div class="card-header">{{ item.nombre }}</div>
-        <div class="card-body">
-            <!-- <h5 class="card-title">Secondary card title</h5> -->
-            <!-- <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-            </p> -->
-            <button class="btn btn-primary" (click)="cargarDatosUsuario(item)">
+    <div *ngIf="!usuarioSeleccionado">
+        <div *ngFor="let item of usuariosFiltrados" class="card text-white bg-secondary mb-3">
+            <div class="card-header">{{ item.nombre + " " + item.apellidos}}</div>
+            <div class="card-body">
+                <button class="btn btn-primary" (click)="cargarDatosUsuario(item)">
         Ver más...
       </button>
+            </div>
         </div>
     </div>
     <div *ngIf="usuarioSeleccionado" class="card bg-light mb-3">
@@ -33,12 +31,13 @@
             <p>Apellidos: {{ usuarioSeleccionado.apellidos }}</p>
             <p>Contraseña: {{ usuarioSeleccionado.contrasena }}</p>
             <p>Rol: {{ usuarioSeleccionado.rol }}</p>
-            <!--
-        <button class="btn btn-primary" (click)="getUsuarioPorNombre(item.nombre)">Ver más...</button>
-      -->
         </div>
     </div>
 </div>
+
+
+
+
 <!-- usuarioAnadir -->
 <div *ngIf="opcionUsuario === 'usuarioAnadir'">
     <form>
@@ -64,7 +63,7 @@
           apellidosUsuario.value,
           emailUsuario.value,
           contrasenaUsuario.value
-        )
+        );
       ">
       Añadir usuario
     </button>
@@ -109,14 +108,10 @@
                 <p>Apellidos: {{ usuarioSeleccionado.apellidos }}</p>
                 <p>Contraseña: {{ usuarioSeleccionado.contrasena }}</p>
                 <p>Rol: {{ usuarioSeleccionado.rol }}</p>
-                <!--
-        <button class="btn btn-primary" (click)="getUsuarioPorNombre(item.nombre)">Ver más...</button>
-      -->
+
             </div>
         </div>
     </div>
-
-
 
     <table *ngIf="trabajos" class="table">
         <thead>
@@ -124,20 +119,13 @@
                 <th scope="col">#</th>
                 <td scope="col">Nombre</td>
             </tr>
-
         </thead>
         <tbody *ngFor="let item of trabajos; let i = index">
-
-
             <tr>
                 <th scope="row">
                     <br>
                     <h3>
-                        <a class="btn btn-sm btn-primary" (click)="anadirTrabajoUsuario(usuarioSeleccionado.id,item.id); getTrabajosUsuario(false,usuarioSeleccionado.id);"><span class="glyphicon glyphicon-ok-circle"></span> Añadir trabajo</a>
-                        <!-- 
-                            
-                        
-                        -->
+                        <a class="btn btn-sm btn-primary" (click)="anadirTrabajoUsuario(usuarioSeleccionado.id,item.id); getTrabajosUsuario(false,usuarioSeleccionado.id); presentAlert('Ok','Trabajo asignado a ','',''); "><span class="glyphicon glyphicon-ok-circle"></span> Añadir trabajo</a>
                     </h3>
                     <br>
                 </th>
@@ -146,11 +134,7 @@
                     <ion-icon name="information-circle-outline" (click)="presentAlert('Descripción','',item.descripcion,'ok')"></ion-icon>
                     {{ item.nombre }}
                 </td>
-                <!-- <td>@mdo</td> -->
             </tr>
-
-
-
         </tbody>
     </table>
 
@@ -169,12 +153,14 @@
     <div *ngFor="let item of usuariosFiltrados" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
         <div class="card-header">{{ item.nombre }}</div>
         <div class="card-body">
-            <h5 class="card-title">Secondary card title</h5>
+            <h5 class="card-title">{{ item.nombre + ' ' + item.apellidos}}</h5>
             <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's content. </p>
-            <button class="btn btn-info" type="button" id="button-addon2" (click)="cargarDatosUsuarioLimpiarFiltrados(item);">
-                            Editar usuario
-                        </button>
+                {{ item.email }}
+            </p>
+            <button class="btn btn-primary" (click)="cargarDatosUsuarioLimpiarFiltrados(item);">
+Editar usuario
+      </button>
+
         </div>
     </div>
     <div *ngIf="usuarioSeleccionado">
@@ -202,7 +188,7 @@
 
 <!-- usuarioBorrar -->
 <div *ngIf="opcionUsuario == 'usuarioBorrar'">
-    opcionUsuario=='usuarioBorrar'
+
     <div class="input-group mb-3">
         <!-- [(ngModel)]="terminoBusqueda" -->
         <input type="text" class="form-control" #buscarTextoBorrarUsuario placeholder="Introduce nombre a buscar" aria-label="Recipient's username" aria-describedby="button-addon2" />
@@ -215,10 +201,11 @@
     <div *ngFor="let item of usuariosFiltrados" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
         <div class="card-header">{{ item.nombre }}</div>
         <div class="card-body">
-            <!-- <h5 class="card-title">Secondary card title</h5> -->
-            <!-- <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-            </p> -->
+            <h5 class="card-title">{{ usuarioSeleccionado.email }}</h5>
+            <p>Nombre: {{ usuarioSeleccionado.nombre }}</p>
+            <p>Apellidos: {{ usuarioSeleccionado.apellidos }}</p>
+            <p>Contraseña: {{ usuarioSeleccionado.contrasena }}</p>
+            <p>Rol: {{ usuarioSeleccionado.rol }}</p>
         </div>
     </div>
 

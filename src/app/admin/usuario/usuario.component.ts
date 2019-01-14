@@ -33,7 +33,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   getUsuarioPorNombre (termino: string): Usuario[] {
-    console.log(termino);
+    // console.log(termino);
 
     termino = termino.toLowerCase();
      this.usuariosFiltrados = new Array<Usuario> ();
@@ -81,9 +81,11 @@ getUsuarios() {
   anadirUsuario (nombre, apellidos, email, contrasena) {
     this.userService.anadirUsuario(nombre, apellidos, email, contrasena).subscribe(response => {
     console.log(response);
-    console.log(response['response']);
     if (  response['response'] ) {
       localStorage.setItem('usuario', JSON.stringify(response['usuario']));
+      this.presentAlert('Usuario añadido', '', '', '');
+    } else {
+      this.presentAlert('Error', '', '', '');
     }
     });
   }
@@ -133,6 +135,12 @@ getUsuarios() {
       //   // mensaje error
       //   this.presentAlert('Error', 'Se ha producido un error al guardar los datos', '', 'ok');
       // }
+    });
+  }
+
+  editarUsuario(usuarioSeleccionado) {
+    this.userService.modificarUsuario(usuarioSeleccionado).subscribe(response => {
+
     });
   }
 

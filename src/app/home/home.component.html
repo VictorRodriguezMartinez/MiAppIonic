@@ -51,15 +51,15 @@
     </ion-item> 
 
     <!-- TIPO JORNADA -->
-    <ion-item>
+    <!-- <ion-item>
       <ion-label class="resaltado" >Jornada continua</ion-label>
       <ion-toggle color="primary"  [(ngModel)]="jornadaContinua" checked name="sdsd"></ion-toggle>
-    </ion-item>
+    </ion-item> -->
 
     <!-- FECHA -->
     <ion-item>
       <ion-label class="resaltado">Fecha</ion-label>
-      <ion-datetime  display-format="YYYY-MM-DD" done-text="OK" cancel-text="Cancelar" [(ngModel)]="fecha"></ion-datetime>
+      <ion-datetime disabled   display-format="YYYY-MM-DD" done-text="OK" cancel-text="Cancelar" [(ngModel)]="fecha"></ion-datetime>
     </ion-item>
 
   
@@ -100,7 +100,14 @@
       
     </ion-list>
   </div>
-    
+
+  <ion-list>
+    <ion-item>
+  <ion-label class="resaltado">Comentario</ion-label>
+  
+</ion-item>
+<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" [(ngModel)]="comentario"></textarea>
+</ion-list>
 
   <ion-button color="primary" expand="block" (click)="ficharDiaUsuario();" >Fichar</ion-button>
   <!-- type="submit" -->
