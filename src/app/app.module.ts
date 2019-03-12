@@ -18,9 +18,10 @@ import { FormsModule } from '@angular/forms';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
+import { ListadoComponent } from './admin/listado/listado.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, AdminComponent, UsuarioComponent, TrabajoComponent, HomeComponent],
+  declarations: [AppComponent, LoginComponent, AdminComponent, UsuarioComponent, TrabajoComponent, HomeComponent, ListadoComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule, NgbModule],
   providers: [

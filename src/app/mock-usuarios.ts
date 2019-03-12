@@ -31,14 +31,14 @@ export const USUARIOS: Usuario[] = [
 ];
 
 export const TRABAJOS: Trabajo[] = [
-  {
-    'id': 1,
-    'nombre': 'Trabajo asd',
-    'descripcion': 'sdasda sadasdsa dasd sad ad assd adsad asd sa',
-  },
-  {
-    'id': 2,
-    'nombre': 'Trabajo asdsd',
-    'descripcion': 'sdf ghsdsddsthtfd dfgd fgdfg hjyth th yhthtyh tyhty sd',
-  }
+  // {
+  //   'id': 1,
+  //   'nombre': 'Trabajo asd',
+  //   'descripcion': 'sdasda sadasdsa dasd sad ad assd adsad asd sa',
+  // },
+  // {
+  //   'id': 2,
+  //   'nombre': 'Trabajo asdsd',
+  //   'descripcion': 'sdf ghsdsddsthtfd dfgd fgdfg hjyth th yhthtyh tyhty sd',
+  // }
 ];

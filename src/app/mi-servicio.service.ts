@@ -52,9 +52,10 @@ anadirTrabajo(nombre, descripcion) {
 }
 
 // modificar usuario
-modificarUsuario(usuario: Usuario) {
+modificarUsuario(id: number, nombre: string, apellidos: string, email: string, contrasena: string) {
   // guardar en base de datos
-  return this.http.put('http://localhost/API_Project/operaciones.php?operacion=mus&nombre=' + usuario.nombre + '' , '');
+  // tslint:disable-next-line:max-line-length
+  return this.http.put('http://localhost/API_Project/operaciones.php?operacion=mus&id=' + id + '&nombre=' + nombre + '&apellidos=' + apellidos + '&email=' + email + '&contrasena=' + contrasena + '' , '');
   // guardar en localStorage
 
 }

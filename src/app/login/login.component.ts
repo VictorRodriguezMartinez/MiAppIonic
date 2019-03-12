@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MiServicioService } from '../mi-servicio.service';
 import { RouterModule, Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public userService: MiServicioService,
-    public routerModule: Router
+    public routerModule: Router,
+    public alertController: AlertController
   ) { }
 
   ngOnInit() {
@@ -38,15 +40,18 @@ x() {
 login (usuario, contrasena) {
   this.userService.login(usuario, contrasena).subscribe(data => {
      console.log(data);
-     if ( data['response'] ) {
+     if ( data['response'] === true ) {
       console.log('aaaa');
       localStorage.setItem('usuario', JSON.stringify(data['usuario']));
       if ( data['usuario']['rol'] === 'admin' ) {
         this.routerModule.navigate(['admin']);
-       } else {
+       } else if (data['usuario']['rol'] === 'worker') {
         this.routerModule.navigate(['home']);
        }
+
       // this.routerModule.navigate(['admin']);
+     } else {
+      this.presentAlert('ERROR', 'Error de entrada', 'Usuario o contraseña incorrectos.', 'OK');
      }
    });
   //  let response = this.userService.login(usuario, contrasena);
@@ -56,7 +61,16 @@ login (usuario, contrasena) {
   //  }
 }
 
+async presentAlert(header, subHeader, message, button) {
+    const alert = await this.alertController.create({
+      header: header,
+      subHeader: subHeader,
+      message: message,
+      buttons: ['OK']
+    });
 
+    await alert.present();
+  }
 
 
 

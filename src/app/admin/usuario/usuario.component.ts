@@ -16,6 +16,7 @@ export class UsuarioComponent implements OnInit {
   usuarios: Usuario[];
   usuariosFiltrados: Usuario[];
   usuarioSeleccionado: Usuario;
+  trabajosDeUsuario: Trabajo[];
   trabajos: Trabajo[];
 
   constructor(
@@ -33,7 +34,6 @@ export class UsuarioComponent implements OnInit {
   }
 
   getUsuarioPorNombre (termino: string): Usuario[] {
-    // console.log(termino);
 
     termino = termino.toLowerCase();
      this.usuariosFiltrados = new Array<Usuario> ();
@@ -138,9 +138,10 @@ getUsuarios() {
     });
   }
 
-  editarUsuario(usuarioSeleccionado) {
-    this.userService.modificarUsuario(usuarioSeleccionado).subscribe(response => {
-
+  editarUsuario(nombre: string, apellidos: string, email: string, contrasena: string) {
+    this.userService.modificarUsuario(this.usuarioSeleccionado.id, nombre, apellidos, email, contrasena).subscribe(response => {
+      this.presentAlert('Error', '', '', '');
+      console.log(JSON.stringify(response));
     });
   }
 

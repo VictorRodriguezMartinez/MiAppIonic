@@ -1,10 +1,12 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title> Ionic APP </ion-title>
+        <ion-title> Bienvenido {{usuario.nombre}} </ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+
+
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Inicio</a
@@ -102,11 +104,8 @@
   </div>
 
   <ion-list>
-    <ion-item>
-  <ion-label class="resaltado">Comentario</ion-label>
-  
-</ion-item>
-<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" [(ngModel)]="comentario"></textarea>
+<!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" [(ngModel)]="comentario"></textarea> -->
+<textarea class="jumbotron"  id="exampleFormControlTextarea1" rows="5" [(ngModel)]="comentario" placeholder="Tareas realizadas..."></textarea>
 </ion-list>
 
   <ion-button color="primary" expand="block" (click)="ficharDiaUsuario();" >Fichar</ion-button>
@@ -126,117 +125,55 @@
     role="tabpanel"
     aria-labelledby="nav-profile-tab"
   >
+  <br>
     <form>
       <div class="form-group">
         <label for="exampleInputNombre">Nombre</label>
-        <input
+        <p>{{usuario.nombre}}</p><hr>
+        <!-- <input
           type="text"
           class="form-control"
           id="exampleInputNombre"
           aria-describedby="ApellidosHelp"
           placeholder="Nombre"
           [value]="usuario.nombre"
-        />
+        /> -->
       </div>
       <div class="form-group">
         <label for="exampleInputApellidos">Apellidos</label>
-        <input
+        <p>{{usuario.apellidos}}</p><hr>
+        <!-- <input
           type="text"
           class="form-control"
           id="exampleInputApellidos"
           aria-describedby="ApellidosHelp"
           placeholder="Apellidos"
           [value]="usuario.apellidos"
-        />
+        /> -->
       </div>
       <div class="form-group">
         <label for="exampleInputEmail">Email</label>
-        <input
+        
+        <p>{{usuario.email}}</p><hr>
+        <!-- <input
           type="email"
           class="form-control"
           id="exampleInputEmail"
           placeholder="Email"
-          [value]="usuario.email"
-        />
+          [value]="usuario.email" readonly
+        /> -->
       </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="list-group" id="list-tab" role="tablist">
-            <a
-              class="list-group-item list-group-item-action active"
-              id="list-home-list"
-              data-toggle="list"
-              href="#list-home"
-              role="tab"
-              aria-controls="home"
-              >Home</a
-            >
-            <a
-              class="list-group-item list-group-item-action"
-              id="list-profile-list"
-              data-toggle="list"
-              href="#list-profile"
-              role="tab"
-              aria-controls="profile"
-              >Profile</a
-            >
-            <a
-              class="list-group-item list-group-item-action"
-              id="list-messages-list"
-              data-toggle="list"
-              href="#list-messages"
-              role="tab"
-              aria-controls="messages"
-              >Messages</a
-            >
-            <a
-              class="list-group-item list-group-item-action"
-              id="list-settings-list"
-              data-toggle="list"
-              href="#list-settings"
-              role="tab"
-              aria-controls="settings"
-              >Settings</a
-            >
-          </div>
-        </div>
-        <div class="col-8">
-          <div class="tab-content" id="nav-tabContent">
-            <div
-              class="tab-pane fade show active"
-              id="list-home"
-              role="tabpanel"
-              aria-labelledby="list-home-list"
-            >
-              ...
-            </div>
-            <div
-              class="tab-pane fade"
-              id="list-profile"
-              role="tabpanel"
-              aria-labelledby="list-profile-list"
-            >
-              ...
-            </div>
-            <div
-              class="tab-pane fade"
-              id="list-messages"
-              role="tabpanel"
-              aria-labelledby="list-messages-list"
-            >
-              ...
-            </div>
-            <div
-              class="tab-pane fade"
-              id="list-settings"
-              role="tabpanel"
-              aria-labelledby="list-settings-list"
-            >
-              ...
-            </div>
-          </div>
-        </div>
-      </div>
+
+
+      <h4>Trabajos:</h4>
+          <ngb-accordion [closeOthers]="true" activeIds="static-1" *ngIf="trabajos">
+            <ngb-panel id="{{trabajo.nombre}}" [title]="trabajo.nombre" *ngFor="let trabajo of trabajos;">
+              <ng-template ngbPanelContent>
+                {{trabajo.descripcion}}
+              </ng-template>
+            </ngb-panel>
+            
+          </ngb-accordion>
     </form>
   </div>
   <!-- CAMBIO CONTRASENA -->
@@ -300,5 +237,30 @@
   Admin
 </button> -->
 
+
+<!-- <ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="schedule">
+      <ion-icon name="calendar"></ion-icon>
+      <ion-label>Schedule</ion-label>
+      <ion-badge>6</ion-badge>
+    </ion-tab-button>
+
+    <ion-tab-button tab="speakers">
+      <ion-icon name="contacts"></ion-icon>
+      <ion-label>Speakers</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="map">
+      <ion-icon name="map"></ion-icon>
+      <ion-label>Map</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="about">
+      <ion-icon name="information-circle"></ion-icon>
+      <ion-label>About</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs> -->
 
 </ion-content>
